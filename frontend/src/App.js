@@ -50,7 +50,7 @@ function App() {
             </form>
           </div>
 
-          <div className="results-container-header">'
+          <div className="results-container-header">
             <header className="header">
                 <h2>Localization Signal found in :</h2>
             </header>
