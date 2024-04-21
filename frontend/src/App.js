@@ -11,7 +11,7 @@ function App() {
         event.preventDefault();
         try {
             // const response = await axios.get(`http://localhost:5000/search?query1=${query1}&query2=${query2}`);
-            
+            console.log(`sending reques to https://localization-signal-search-server.onrender.com/search?query1=${query1}&query2=${query2}`);
             const response = await axios.get(`https://localization-signal-search-server.onrender.com/search?query1=${query1}&query2=${query2}`);
             const data = response.data;
             const stringList = data.split('\n').map(line => line.trim()).filter(line => line !== '');
