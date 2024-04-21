@@ -13,8 +13,9 @@ function App() {
         try {
             console.log('Query1:', query1);
             console.log('Query2:', query2);
-            console.log(`sending request to http://localhost:5000/search?query1=${query1}&query2=${query2}`);
-            const response = await axios.get(`http://localhost:5000/search?query1=${query1}&query2=${query2}`);
+            
+            console.log(`sending request to https://localization-signal-search-flask-server.onrender.com/search?query1=${query1}&query2=${query2}`);
+            const response = await axios.get(`https://localization-signal-search-flask-server.onrender.com/search?query1=${query1}&query2=${query2}`);
             const stringList = response.data;
             setSearchResults(stringList);
         } catch (error) {
