@@ -2,25 +2,31 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import getSequence as gs
+import json
 
 app = Flask(__name__)
 CORS(app)
 
 
 def search_for_sequence(gene_list, gene_amino_acid_sequence):
+    with open('gene_sequence.json', 'r') as file:
+        gene_data = json.load(file)
     targeting_genes = []
     # print(f"{'Gene Name':<{10}} | Target Chain Presence")
     # print("-" * 25)
     for gene_name in gene_list:
-        gene = gene_name
-        try:
-            gene_sequence = gs.getseq([gene])[0][-1]
-            # print(f"{gene_name:<{10}} | {gene_amino_acid_sequence in gene_sequence}")
-            # print("-" * 25)
-            if(gene_amino_acid_sequence in gene_sequence) :
-                targeting_genes.append(gene_name)
-        except Exception as e:
-            continue
+        if gene_name in gene_data:
+            if(gene_amino_acid_sequence in gene_data[gene_name]) :
+                    targeting_genes.append(gene_name)
+        else :
+            try:
+                gene_sequence = gs.getseq([gene_name])[0][-1]
+                # print(f"{gene_name:<{10}} | {gene_amino_acid_sequence in gene_sequence}")
+                # print("-" * 25)
+                if(gene_amino_acid_sequence in gene_sequence) :
+                    targeting_genes.append(gene_name)
+            except Exception as e:
+                continue
     return targeting_genes
 
 
