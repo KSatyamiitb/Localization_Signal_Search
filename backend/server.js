@@ -10,10 +10,10 @@ app.use(cors());
 
 app.get('/search', (req, res) => {
     const { query1, query2 } = req.query;
-    // console.log('Search query:', query1, query2);
+    console.log('Got Search query:', query1, query2);
     const pythonProcess = spawn('python3', ['./searchTarget.py', query1, query2]);
     pythonProcess.stdout.on('data', (data) => {
-        // console.log(`${data}`);
+        console.log(`${data}`);
         res.send(data);
     });
 });
