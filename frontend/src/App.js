@@ -11,20 +11,11 @@ function App() {
     const handleSubmit = async(event) => {
         event.preventDefault();
         try {
-<<<<<<< HEAD
             console.log('Query1:', query1);
             console.log('Query2:', query2);
             console.log(`sending request to http://localhost:5000/search?query1=${query1}&query2=${query2}`);
             const response = await axios.get(`http://localhost:5000/search?query1=${query1}&query2=${query2}`);
             const stringList = response.data;
-=======
-            // const response = await axios.get(`http://localhost:5000/search?query1=${query1}&query2=${query2}`);
-            console.log(`sending reques to https://localization-signal-search-server.onrender.com/search?query1=${query1}&query2=${query2}`);
-            const response = await axios.get(`https://localization-signal-search-server.onrender.com/search?query1=${query1}&query2=${query2}`);
-            const data = response.data;
-            console.log(`recieved ${data} as response`);
-            const stringList = data.split('\n').map(line => line.trim()).filter(line => line !== '');
->>>>>>> 502c76ef9897ea66def6b1279a754e041d283d28
             setSearchResults(stringList);
         } catch (error) {
             console.error('Error fetching search results:', error);
