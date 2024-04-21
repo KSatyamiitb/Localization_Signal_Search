@@ -27,7 +27,7 @@ function App() {
         <div className="App">
           <header className="header">
             <h1>BB411 Assignment 2</h1>
-            <h2>Kumar Satyam & Sai Susrush</h2>
+            <h5>Kumar Satyam & Sai Susrush</h5>
             <h2>Search Localization Signal in Genes</h2>
           </header>
           <div className="form-container">
