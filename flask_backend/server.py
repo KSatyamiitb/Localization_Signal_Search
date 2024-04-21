@@ -50,6 +50,8 @@ def search():
     targeting_genes = search_for_sequence(gene_list, amino_acid_sequence)
     for gene in targeting_genes:
         print(gene)
+    if len(targeting_genes) == 0:
+        targeting_genes.append('Not found in any of above genes')
     return targeting_genes
 
 if __name__ == '__main__':
