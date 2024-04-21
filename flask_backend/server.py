@@ -14,6 +14,7 @@ def search_for_sequence(gene_list, gene_amino_acid_sequence):
     targeting_genes = []
     # print(f"{'Gene Name':<{10}} | Target Chain Presence")
     # print("-" * 25)
+    new_gene_sequence_added = False
     for gene_name in gene_list:
         if gene_name in gene_data:
             if(gene_amino_acid_sequence in gene_data[gene_name]) :
@@ -25,8 +26,13 @@ def search_for_sequence(gene_list, gene_amino_acid_sequence):
                 # print("-" * 25)
                 if(gene_amino_acid_sequence in gene_sequence) :
                     targeting_genes.append(gene_name)
+                gene_data[gene_name] = gene_sequence
+                new_gene_sequence_added = True
             except Exception as e:
                 continue
+    if new_gene_sequence_added:
+        with open('gene_sequence.json', 'w') as file:
+            json.dump(gene_data, file, indent=4)
     return targeting_genes
 
 
