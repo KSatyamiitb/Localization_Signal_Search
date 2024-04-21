@@ -1,3 +1,4 @@
+
 import './App.css';
 import React, { useState } from 'react';
 import axios from 'axios';
@@ -14,6 +15,7 @@ function App() {
             console.log(`sending reques to https://localization-signal-search-server.onrender.com/search?query1=${query1}&query2=${query2}`);
             const response = await axios.get(`https://localization-signal-search-server.onrender.com/search?query1=${query1}&query2=${query2}`);
             const data = response.data;
+            console.log(`recieved ${data} as response`);
             const stringList = data.split('\n').map(line => line.trim()).filter(line => line !== '');
             setSearchResults(stringList);
         } catch (error) {
