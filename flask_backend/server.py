@@ -41,9 +41,9 @@ def search():
     query1 = request.args.get('query1')
     query2 = request.args.get('query2')
     print('Search query:', query1, query2)
-    amino_acid_sequence = query1
+    amino_acid_sequence = query1.upper().strip()
     # print(amino_acid_sequence)
-    gene_list = [substring.strip() for substring in query2.split(',')]
+    gene_list = [substring.upper().strip() for substring in query2.split(',')]
     # for gene in gene_list:
     #     print(gene)
     # "IDMLIDLGLDLSD" "SKL" "PKKKRKV"
