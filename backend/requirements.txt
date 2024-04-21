@@ -1,0 +1,2 @@
+getSequence==2.0
+protfasta==0.1.13
